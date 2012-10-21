@@ -2,23 +2,23 @@ var buster     = require('buster'),
     OptCollect = require(__dirname + '/..');
 
 buster.testCase('optcollect', {
-	'get true option list': function () {
-		var opts = new OptCollect(['-svx']);
-		assert(opts.options == ['s', 'v', 'x']);
+	'gets true option list': function () {
+		var opts = new OptCollect(['-sv', '-x']);
+		assert.equals(opts.options, ['s', 'v', 'x']);
 	},
-	'check true': function () {
+	'checks true': function () {
 		var opts = new OptCollect(['-svx']);
 		assert(opts.isTrue('s'));
 	},
-	'check false': function () {
+	'checks false': function () {
 		var opts = new OptCollect(['-svx']);
 		refuse(opts.isTrue('a'));
 	},
-	'get value': function () {
+	'gets value': function () {
 		var opts = new OptCollect(['-s', 'hogehoge']);
 		assert(opts.value('s') == 'hogehoge');
 	},
-	'group options': function () {
+	'groups options': function () {
 		var opts = new OptCollect(['--safari']);
 		opts.group(['s', 'safari']);
 
