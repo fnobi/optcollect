@@ -12,10 +12,11 @@ buster.testCase('optcollect', {
 	},
 	'checks false': function () {
 		var opts = new OptCollect(['-svx']);
-		refuse(opts.isTrue('a'));
+		assert(!opts.isTrue('a'));
 	},
 	'gets value': function () {
 		var opts = new OptCollect(['-s', 'hogehoge']);
+
 		assert(opts.value('s') == 'hogehoge');
 	},
 	'groups options': function () {
